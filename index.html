@@ -348,12 +348,7 @@
                 </a>
             </div>
         </div>
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-            </svg>
-        </div>
+
     </section>
     <style>
         .gradient-bg {
@@ -617,22 +612,30 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-blue-50 py-20" data-aos="fade-up">
+    <section id="contact" class="bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900 py-20" data-aos="fade-up">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Contact</h2>
-        <form class="bg-white rounded-xl shadow p-8 mb-8 grid grid-cols-1 gap-6">
-          <input type="text" placeholder="Your Name" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required />
-          <input type="email" placeholder="Your Email" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required />
-          <textarea placeholder="Your Message" rows="4" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required></textarea>
-          <button type="submit" class="bg-blue-600 text-white font-semibold rounded-lg px-6 py-3 hover:bg-blue-700 transition">Send Message</button>
+        <h2 class="text-4xl font-extrabold mb-8 text-center text-white tracking-tight">Contact</h2>
+        <form class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-10 mb-10 grid grid-cols-1 gap-6">
+          <input type="text" placeholder="Your Name" class="bg-white/10 border border-gray-400/30 rounded-lg px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <input type="email" placeholder="Your Email" class="bg-white/10 border border-gray-400/30 rounded-lg px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <textarea placeholder="Your Message" rows="4" class="bg-white/10 border border-gray-400/30 rounded-lg px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" required></textarea>
+          <button type="submit" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg px-8 py-3 hover:from-blue-700 hover:to-purple-700 shadow-lg transition text-lg flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 8l10 6 10-6"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 8v8a2 2 0 002 2h16a2 2 0 002-2V8"/></svg>
+            Send Message
+          </button>
         </form>
-        <div class="text-center text-gray-700">
-          <p>Email: <a href="mailto:mirna.campaign@email.com" class="text-blue-600 hover:underline">mirna.campaign@email.com</a></p>
-          <p>Phone: <a href="tel:+1234567890" class="text-blue-600 hover:underline">+1 234 567 890</a></p>
-          <div class="flex justify-center space-x-4 mt-4">
-            <a href="#" class="text-blue-600 dark:text-yellow-400 hover:text-blue-800 dark:hover:text-yellow-300"><svg class="w-6 h-6 animate-spin hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.56v14.91A4.56 4.56 0 0 1 19.44 24H4.56A4.56 4.56 0 0 1 0 19.47V4.56A4.56 4.56 0 0 1 4.56 0h14.91A4.56 4.56 0 0 1 24 4.56zM8.09 19.47V9.5H5.08v9.97zm-1.5-11.3a1.74 1.74 0 1 1 0-3.48 1.74 1.74 0 010 3.48zm15.41 11.3v-5.4c0-2.89-1.54-4.23-3.6-4.23-1.66 0-2.41.91-2.83 1.55v-1.33h-3.01c.04.88 0 9.97 0 9.97h3.01v-5.57c0-.3.02-.6.11-.81.24-.6.78-1.22 1.69-1.22 1.19 0 1.67.92 1.67 2.27v5.33h3.01z"/></svg></a>
-            <a href="#" class="text-blue-600 dark:text-yellow-400 hover:text-blue-800 dark:hover:text-yellow-300"><svg class="w-6 h-6 animate-bounce hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .39.045.765.127 1.124C7.691 8.095 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099-.807-.026-1.566-.247-2.228-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.956 2.444 3.377 4.6 3.417-1.68 1.318-3.809 2.105-6.102 2.105-.397 0-.788-.023-1.175-.069 2.179 1.397 4.768 2.213 7.557 2.213 9.054 0 14.009-7.496 14.009-13.986 0-.21 0-.423-.016-.634.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
-            <a href="#" class="text-blue-600 dark:text-yellow-400 hover:text-blue-800 dark:hover:text-yellow-300"><svg class="w-6 h-6 animate-pulse hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.414 3.678 1.395c-.98.98-1.263 2.092-1.322 3.373C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.281.342 2.393 1.322 3.373.981.981 2.093 1.264 3.374 1.323C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.342 3.373-1.323.981-.98 1.264-2.092 1.323-3.373.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.281-.342-2.393-1.323-3.373-.98-.981-2.092-1.264-3.373-1.323C15.668.013 15.259 0 12 0z"/></svg></a>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-white/90">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 01-8 0V8a4 4 0 018 0v4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v2m0 4h.01"/></svg>
+            <a href="mailto:mirna.campaign@email.com" class="hover:underline">mirna.campaign@email.com</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            <a href="tel:+1234567890" class="hover:underline">+1 234 567 890</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0"/></svg>
+            <span>Follow us on social media</span>
           </div>
         </div>
       </div>
@@ -683,8 +686,37 @@
       // Mobile menu
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      // Ensure mobile menu is hidden by default
+      mobileMenu.classList.add('hidden');
+      menuIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      let isMenuOpen = false;
       menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+          isMenuOpen = !isMenuOpen;
+          if (isMenuOpen) {
+              mobileMenu.classList.remove('hidden');
+              menuIcon.classList.add('hidden');
+              closeIcon.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+          } else {
+              mobileMenu.classList.add('hidden');
+              menuIcon.classList.remove('hidden');
+              closeIcon.classList.add('hidden');
+              document.body.style.overflow = 'auto';
+          }
+      });
+      // Close mobile menu when clicking on links
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+              isMenuOpen = false;
+              mobileMenu.classList.add('hidden');
+              menuIcon.classList.remove('hidden');
+              closeIcon.classList.add('hidden');
+              document.body.style.overflow = 'auto';
+          });
       });
     </script>
   </body>
