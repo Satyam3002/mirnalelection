@@ -50,7 +50,7 @@ If you are asked about any of the above, answer in detail. If the question is no
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: [
-        { role: "system", parts: [{ text: systemPrompt }] },
+        { role: "user", parts: [{ text: systemPrompt }] },
         { role: "user", parts: [{ text: userMessage }] }
       ],
       config: {

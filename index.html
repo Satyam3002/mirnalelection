@@ -645,10 +645,17 @@
     <button id="chatbot-btn" class="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl hover:scale-110 transition-all">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
     </button>
-    <div id="chatbot-window" class="fixed bottom-24 right-6 z-50 w-80 max-w-full bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl hidden flex-col overflow-hidden">
+    <div id="chatbot-window" class="fixed bottom-24 right-6 z-50 w-80 max-w-full bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl hidden flex-col overflow-hidden chatbot-responsive">
       <div class="bg-gradient-to-r from-blue-700 to-purple-700 p-4 flex items-center justify-between">
         <span class="font-bold text-white text-lg">Chat with MirnalBot</span>
         <button id="chatbot-close" class="text-white hover:text-red-400 text-2xl">&times;</button>
+      </div>
+      <!-- Suggested Questions Row -->
+      <div id="chatbot-suggestions" class="flex flex-wrap gap-2 p-3 bg-gray-800 border-b border-gray-700">
+        <button class="suggestion-btn bg-blue-700 hover:bg-blue-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">What are Mirnal's main manifesto points?</button>
+        <button class="suggestion-btn bg-purple-700 hover:bg-purple-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">What has Mirnal achieved as Mess Secretary?</button>
+        <button class="suggestion-btn bg-green-700 hover:bg-green-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">How can I contact Mirnal?</button>
+        <button class="suggestion-btn bg-yellow-700 hover:bg-yellow-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">Why should I vote for Mirnal?</button>
       </div>
       <div class="flex-1 p-4 space-y-2 overflow-y-auto h-64 bg-gray-900 text-white" id="chatbot-messages">
         <div class="text-gray-400 text-sm text-center">How can I help you?</div>
@@ -658,6 +665,35 @@
         <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 font-bold">Send</button>
       </form>
     </div>
+    <style>
+      /* Chatbot Responsive Sizing */
+      .chatbot-responsive {
+        width: 480px;
+        max-width: 95vw;
+        height: 600px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 600px) {
+        .chatbot-responsive {
+          width: 100vw !important;
+          right: 0 !important;
+          left: 0 !important;
+          bottom: 0 !important;
+          border-radius: 0 !important;
+          height: 90vh !important;
+          max-height: 95vh !important;
+        }
+      }
+      #chatbot-suggestions {
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      #chatbot-suggestions::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
     <script>
       // Chatbot UI logic (UI only, not functional)
       const chatbotBtn = document.getElementById('chatbot-btn');
@@ -665,6 +701,16 @@
       const chatbotClose = document.getElementById('chatbot-close');
       chatbotBtn.addEventListener('click', () => chatbotWindow.classList.remove('hidden'));
       chatbotClose.addEventListener('click', () => chatbotWindow.classList.add('hidden'));
+      // Suggested questions logic
+      const suggestions = document.querySelectorAll('.suggestion-btn');
+      const chatbotInput = document.getElementById('chatbot-input');
+      const chatbotForm = document.getElementById('chatbot-form');
+      suggestions.forEach(btn => {
+        btn.addEventListener('click', () => {
+          chatbotInput.value = btn.textContent;
+          chatbotForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        });
+      });
       // To make this chatbot functional, you would need to connect the form to a backend API (e.g., Gemini model from Google AI) and handle message streaming and state.
     </script>
 
