@@ -550,6 +550,180 @@
         </div>
       </div>
     </section>
+        <!-- Election Countdown Timer (Premium, Animated) -->
+<section id="election-timer" class="relative w-full flex flex-col items-center justify-center py-10 bg-gray-900 overflow-hidden">
+  <!-- Animated background particles -->
+  <div class="bg-particles pointer-events-none absolute inset-0 z-0">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto">
+    <!-- Title -->
+    <h2 class="title text-4xl md:text-6xl font-black text-center mb-12 tracking-tight">Election Countdown</h2>
+    <!-- Countdown Container -->
+    <div class="countdown-container rounded-3xl p-8 md:p-12 mb-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <!-- Days -->
+        <div class="countdown-box rounded-2xl p-6 text-center transform">
+          <div class="countdown-number text-4xl md:text-6xl mb-2" id="days">00</div>
+          <div class="countdown-label text-sm md:text-base">Days</div>
+        </div>
+        <!-- Hours -->
+        <div class="countdown-box rounded-2xl p-6 text-center transform">
+          <div class="countdown-number text-4xl md:text-6xl mb-2" id="hours">00</div>
+          <div class="countdown-label text-sm md:text-base">Hours</div>
+        </div>
+        <!-- Minutes -->
+        <div class="countdown-box rounded-2xl p-6 text-center transform">
+          <div class="countdown-number text-4xl md:text-6xl mb-2" id="minutes">00</div>
+          <div class="countdown-label text-sm md:text-base">Minutes</div>
+        </div>
+        <!-- Seconds -->
+        <div class="countdown-box rounded-2xl p-6 text-center transform">
+          <div class="countdown-number text-4xl md:text-6xl mb-2" id="seconds">00</div>
+          <div class="countdown-label text-sm md:text-base">Seconds</div>
+        </div>
+      </div>
+    </div>
+    <!-- Voting Information -->
+    <div class="voting-info rounded-2xl px-8 py-6 text-center">
+      <p class="text-white text-lg md:text-xl font-semibold">
+        Voting starts: <span class="text-purple-300 font-bold">25 July, 3:00 PM</span>
+      </p>
+    </div>
+  </div>
+</section>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  #election-timer, #election-timer * { font-family: 'Inter', sans-serif; }
+  .bg-particles { position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+  .particle { position: absolute; background: rgba(139, 92, 246, 0.1); border-radius: 50%; animation: float 6s ease-in-out infinite; }
+  .particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
+  .particle:nth-child(2) { width: 120px; height: 120px; left: 20%; animation-delay: 2s; }
+  .particle:nth-child(3) { width: 60px; height: 60px; left: 35%; animation-delay: 4s; }
+  .particle:nth-child(4) { width: 100px; height: 100px; left: 50%; animation-delay: 1s; }
+  .particle:nth-child(5) { width: 90px; height: 90px; left: 70%; animation-delay: 3s; }
+  .particle:nth-child(6) { width: 110px; height: 110px; left: 85%; animation-delay: 5s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    50% { transform: translateY(-100px) rotate(180deg); }
+  }
+  .countdown-container {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .countdown-box {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .countdown-box:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+  .countdown-number {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  .countdown-label {
+    color: rgba(203, 213, 225, 0.9);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .title {
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleSlide 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .voting-info {
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(100px); opacity: 0; scale: 0.9; }
+    100% { transform: translateY(0); opacity: 1; scale: 1; }
+  }
+  @keyframes popIn {
+    0% { transform: scale(0.8) rotate(-10deg); opacity: 0; }
+    50% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+  @keyframes glow {
+    0% { text-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3); }
+    100% { text-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.4); }
+  }
+  @keyframes titleSlide {
+    0% { transform: translateY(-50px); opacity: 0; filter: blur(10px); }
+    100% { transform: translateY(0); opacity: 1; filter: blur(0px); }
+  }
+  @keyframes fadeInUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @media (max-width: 640px) {
+    .countdown-box { padding: 1rem; }
+    .countdown-number { font-size: 2.5rem; }
+  }
+  .countdown-box:nth-child(1) { animation-delay: 0.1s; }
+  .countdown-box:nth-child(2) { animation-delay: 0.2s; }
+  .countdown-box:nth-child(3) { animation-delay: 0.3s; }
+  .countdown-box:nth-child(4) { animation-delay: 0.4s; }
+  .countdown-box:nth-child(5) { animation-delay: 0.5s; }
+  .countdown-box:nth-child(6) { animation-delay: 0.6s; }
+  .countdown-box:nth-child(7) { animation-delay: 0.7s; }
+</style>
+<script>
+// Set the date we're counting down to
+const countDownDate = new Date("Jul 25, 2025 15:00:00").getTime();
+const countdownFunction = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countDownDate - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+  document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+  document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+  document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+  if (distance < 0) {
+    clearInterval(countdownFunction);
+    document.querySelector('.countdown-container').innerHTML = 
+      '<div class="text-center text-white text-4xl font-bold">VOTING HAS STARTED!</div>';
+  }
+}, 1000);
+document.querySelectorAll('.countdown-box').forEach(box => {
+  box.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-8px) scale(1.05)';
+  });
+  box.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) scale(1)';
+  });
+});
+</script>
     <!-- About Section -->
     <section id="about" class="max-w-6xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-12">
         <img src="assests/11.jpg" alt="Candidate" class="w-56 h-56 rounded-2xl shadow-lg object-cover" />
