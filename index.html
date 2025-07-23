@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mirna Election Campaign</title>
@@ -15,7 +15,7 @@
     <style>
       body { font-family: 'Montserrat', sans-serif; }
     </style>
-  </head>
+</head>
   <body class="bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
     <!-- Enhanced Navbar -->
     <nav class="w-full navbar-glass fixed top-0 left-0 z-50 transition-all duration-300" id="navbar" style="backdrop-filter: blur(20px);">
@@ -568,10 +568,10 @@
     <section id="about" class="max-w-6xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-12">
         <img src="assests/11.jpg" alt="Candidate" class="w-56 h-56 rounded-2xl shadow-lg object-cover" />
         <div class="flex-1">
-          <h2 class="text-3xl font-bold mb-4">About Mirnal</h2>
-          <p class="mb-6 text-lg font-semibold">Mirnal Pratap Singh is a B.Tech 4th year student at the School of Engineering, JNU. He has served as Mess Secretary of Lohit Hostel, where he demonstrated leadership, inclusivity, and a commitment to community well-being.</p>
+            <h2 class="text-3xl font-bold mb-4">About</h2>
+            <p class="mb-6 text-lg font-semibold">Mirnal Pratap Singh is a B.Tech 4th year student at the School of Engineering, JNU. He has served as Mess Secretary of Lohit Hostel, where he demonstrated leadership, inclusivity, and a commitment to community well-being.</p>
         </div>
-      </section>
+    </section>
     <style>
       @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(30px); }
@@ -612,7 +612,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-gray-800 py-20" data-aos="fade-up">
+    <section id="contact" class="bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900 py-20" data-aos="fade-up">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-4xl font-extrabold mb-8 text-center text-white tracking-tight">Contact</h2>
         <form class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-10 mb-10 grid grid-cols-1 gap-6">
@@ -627,11 +627,11 @@
         <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-white/90">
           <div class="flex items-center gap-3">
             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 01-8 0V8a4 4 0 018 0v4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v2m0 4h.01"/></svg>
-            <a href="mailto:mirna.campaign@email.com" class="hover:underline">mirna.campaign@email.com</a>
+            <a href="mailto:mirnalpratapsingh@gmail.com" class="hover:underline">mirnalpratapsingh@gmail.com</a>
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-            <a href="tel:+1234567890" class="hover:underline">+1 234 567 890</a>
+            <a href="tel:7042521657" class="hover:underline">7042521657</a>
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0"/></svg>
@@ -640,6 +640,33 @@
         </div>
       </div>
     </section>
+
+    <!-- Chatbot Floating Button and UI (UI only, not functional) -->
+    <button id="chatbot-btn" class="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl hover:scale-110 transition-all">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M8 11h8M8 7h8"/></svg>
+    </button>
+    <div id="chatbot-window" class="fixed bottom-24 right-6 z-50 w-80 max-w-full bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl hidden flex-col overflow-hidden">
+      <div class="bg-gradient-to-r from-blue-700 to-purple-700 p-4 flex items-center justify-between">
+        <span class="font-bold text-white text-lg">Chat with MirnalBot</span>
+        <button id="chatbot-close" class="text-white hover:text-red-400 text-2xl">&times;</button>
+      </div>
+      <div class="flex-1 p-4 space-y-2 overflow-y-auto h-64 bg-gray-900 text-white" id="chatbot-messages">
+        <div class="text-gray-400 text-sm text-center">How can I help you?</div>
+      </div>
+      <form id="chatbot-form" class="flex items-center gap-2 p-4 bg-gray-800">
+        <input id="chatbot-input" type="text" class="flex-1 rounded-lg px-3 py-2 bg-gray-700 text-white focus:outline-none" placeholder="Type your message..." autocomplete="off" />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 font-bold">Send</button>
+      </form>
+    </div>
+    <script>
+      // Chatbot UI logic (UI only, not functional)
+      const chatbotBtn = document.getElementById('chatbot-btn');
+      const chatbotWindow = document.getElementById('chatbot-window');
+      const chatbotClose = document.getElementById('chatbot-close');
+      chatbotBtn.addEventListener('click', () => chatbotWindow.classList.remove('hidden'));
+      chatbotClose.addEventListener('click', () => chatbotWindow.classList.add('hidden'));
+      // To make this chatbot functional, you would need to connect the form to a backend API (e.g., Gemini model from Google AI) and handle message streaming and state.
+    </script>
 
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-800 border-t py-6 mt-12" data-aos="fade-in">
@@ -655,33 +682,6 @@
       AOS.init({
         duration: 1000,
         once: true
-      });
-      // Dark/Light mode toggle
-      const themeToggle = document.getElementById('theme-toggle');
-      const html = document.documentElement;
-      const lightIcon = document.getElementById('theme-toggle-light-icon');
-      const darkIcon = document.getElementById('theme-toggle-dark-icon');
-      function setTheme(dark) {
-        if (dark) {
-          html.classList.add('dark');
-          darkIcon.classList.add('hidden');
-          lightIcon.classList.remove('hidden');
-          localStorage.setItem('theme', 'dark');
-        } else {
-          html.classList.remove('dark');
-          lightIcon.classList.add('hidden');
-          darkIcon.classList.remove('hidden');
-          localStorage.setItem('theme', 'light');
-        }
-      }
-      // Initial theme
-      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        setTheme(true);
-      } else {
-        setTheme(false);
-      }
-      themeToggle.addEventListener('click', () => {
-        setTheme(!html.classList.contains('dark'));
       });
       // Mobile menu
       const menuBtn = document.getElementById('menu-btn');
@@ -719,5 +719,5 @@
           });
       });
     </script>
-  </body>
+</body>
 </html>
