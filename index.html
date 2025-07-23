@@ -647,7 +647,26 @@
     </button>
     <!-- Chatbot Overlay -->
     <div id="chatbot-overlay" class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"></div>
-    <div id="chatbot-window" class="fixed bottom-24 right-6 z-50 w-80 max-w-full bg-gray-900/80 border border-gray-400/30 rounded-2xl shadow-2xl flex-col overflow-hidden chatbot-responsive chatbot-glass chatbot-fade"></div>
+    <div id="chatbot-window" class="fixed bottom-24 right-6 z-50 w-80 max-w-full bg-gray-900/80 border border-gray-400/30 rounded-2xl shadow-2xl flex-col overflow-hidden chatbot-responsive chatbot-glass chatbot-fade">
+      <div class="bg-gradient-to-r from-blue-700 to-purple-700 p-4 flex items-center justify-between">
+        <span class="font-bold text-white text-lg">Chat with MirnalBot</span>
+        <button id="chatbot-close" class="text-white hover:text-red-400 text-3xl font-bold p-2 ml-2 rounded-full focus:outline-none cursor-pointer z-50" style="min-width: 44px; min-height: 44px; line-height: 1;">&times;</button>
+      </div>
+      <!-- Suggested Questions Row -->
+      <div id="chatbot-suggestions" class="flex flex-wrap gap-2 p-3 bg-gray-800 border-b border-gray-700">
+        <button class="suggestion-btn bg-blue-700 hover:bg-blue-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">What are Mirnal's main manifesto points?</button>
+        <button class="suggestion-btn bg-purple-700 hover:bg-purple-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">What has Mirnal achieved as Mess Secretary?</button>
+        <button class="suggestion-btn bg-green-700 hover:bg-green-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">How can I contact Mirnal?</button>
+        <button class="suggestion-btn bg-yellow-700 hover:bg-yellow-800 text-white text-xs md:text-sm rounded-full px-4 py-2 transition-all">Why should I vote for Mirnal?</button>
+      </div>
+      <div class="flex-1 p-4 space-y-2 overflow-y-auto h-64 bg-gray-900 text-white" id="chatbot-messages">
+        <div class="text-gray-400 text-sm text-center">How can I help you?</div>
+      </div>
+      <form id="chatbot-form" class="flex items-center gap-2 p-4 bg-gray-800">
+        <input id="chatbot-input" type="text" class="flex-1 rounded-lg px-3 py-2 bg-gray-700 text-white focus:outline-none" placeholder="Type your message..." autocomplete="off" />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 font-bold">Send</button>
+      </form>
+    </div>
     <style>
       /* Chatbot Responsive Sizing */
       .chatbot-responsive {
@@ -736,8 +755,11 @@
         });
 
         // Chatbot functionality: send/receive messages
+        let isWaitingForResponse = false;
         chatbotForm.addEventListener('submit', async function(e) {
           e.preventDefault();
+          if (isWaitingForResponse) return; // Prevent double submit
+
           const msg = chatbotInput.value.trim();
           if (!msg) return;
 
@@ -752,34 +774,51 @@
 
           // Show loading indicator
           const loadingDiv = document.createElement('div');
-          loadingDiv.className = 'text-gray-400 text-sm';
+          loadingDiv.className = 'text-gray-400 text-sm chatbot-typing';
           loadingDiv.textContent = 'MirnalBot is typing...';
           chatbotMessages.appendChild(loadingDiv);
           chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
+          // Disable input and button
+          chatbotInput.disabled = true;
+          chatbotForm.querySelector('button[type="submit"]').disabled = true;
+          isWaitingForResponse = true;
+
           // Send to backend
           try {
+            console.log('Sending to MirnalBot:', msg); // Log outgoing message
             const res = await fetch('https://mirnalelection.onrender.com/chat', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ message: msg })
             });
             const data = await res.json();
+            console.log('MirnalBot backend response:', data); // Debug log
             loadingDiv.remove();
 
-            // Show bot's reply
+            // Show bot's reply or fallback error
             const botMsgDiv = document.createElement('div');
             botMsgDiv.className = 'text-left text-gray-100 bg-gray-800/70 rounded-lg px-3 py-2 mb-2 mr-10';
-            botMsgDiv.textContent = data.reply || 'No response from MirnalBot.';
+            if (data && typeof data.reply === 'string' && data.reply.trim()) {
+              botMsgDiv.textContent = data.reply;
+            } else {
+              botMsgDiv.textContent = 'No valid response from MirnalBot.';
+            }
             chatbotMessages.appendChild(botMsgDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
           } catch (err) {
+            console.error('MirnalBot fetch error:', err); // Debug log
             loadingDiv.remove();
             const errorDiv = document.createElement('div');
             errorDiv.className = 'text-left text-red-400 bg-red-900/40 rounded-lg px-3 py-2 mb-2 mr-10';
             errorDiv.textContent = 'Error contacting MirnalBot.';
             chatbotMessages.appendChild(errorDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+          } finally {
+            chatbotInput.disabled = false;
+            chatbotForm.querySelector('button[type="submit"]').disabled = false;
+            isWaitingForResponse = false;
+            chatbotInput.focus();
           }
         });
       });
