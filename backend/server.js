@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { GoogleGenAI } = require('@google/genai');
@@ -6,7 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const GEMINI_API_KEY = 'AIzaSyASNlnkXx3he-qnGEdbI-Qy1-FLy2XK7cI'; 
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+console.log(GEMINI_API_KEY); // For debugging, remove in production
 
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
