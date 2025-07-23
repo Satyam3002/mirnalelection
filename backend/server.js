@@ -64,15 +64,10 @@ If you are asked about any of the above, answer in detail. If the question is no
     let reply = response.text || 'No response from Gemini.';
     // Post-process: if reply contains multiple points, format as a clean bulleted list
     if (reply && (reply.includes('•') || reply.includes('* '))) {
-      // Convert * or • to real bullet points, and ensure each bullet is on its own line
+      // Convert * or • to real bullet points
       reply = reply.replace(/\*\s+/g, '• ').replace(/\n{2,}/g, '\n');
-      // Ensure each bullet starts on a new line
-      reply = reply.replace(/\s*•/g, '\n•');
-      // Remove leading newlines
-      reply = reply.replace(/^\n+/, '');
-      // Remove double newlines
-      reply = reply.replace(/\n{2,}/g, '\n');
     }
+    // Optionally, add more formatting rules here
     res.json({ reply });
   } catch (err) {
     console.error(err);
