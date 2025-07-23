@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirna Election Campaign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css for extra animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Montserrat', sans-serif; }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <!-- Enhanced Navbar -->
+    <nav class="w-full navbar-glass fixed top-0 left-0 z-50 transition-all duration-300" id="navbar" style="backdrop-filter: blur(20px);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-28"> <!-- increased h-28 -->
+            <!-- Enhanced Logo Section -->
+            <div class="flex items-center space-x-4 group py-2"> <!-- increased space-x and added py-2 -->
+                <div class="relative">
+                    <img src="assests/11.jpg" alt="Mirnal Logo" class="h-16 w-16 rounded-full border-2 border-purple-500 logo-glow transition-all duration-300 group-hover:scale-110" /> <!-- increased h-16 w-16 -->
+                    <div class="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div> <!-- increased w-5 h-5 -->
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-black text-2xl tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"> <!-- increased text-2xl -->
+                        Mirnal For Change
+                    </span>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Lohit Hostel President</span> <!-- increased text-sm font-semibold -->
+                </div>
+            </div>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-10 py-2"> <!-- increased space-x and added py-2 -->
+                <a href="#about" class="nav-link font-bold text-xl text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-yellow-400 transition-colors">About</a>
+                <a href="#vision" class="nav-link font-bold text-xl text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-yellow-400 transition-colors">Vision</a>
+                <a href="#manifesto" class="nav-link font-bold text-xl text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-yellow-400 transition-colors">Manifesto</a>
+                <a href="#contact" class="nav-link font-bold text-xl text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-yellow-400 transition-colors">Contact</a>
+                <a href="#vote" class="group relative ml-8 px-10 py-5 text-xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden"> <!-- increased px/py/text-xl/font-extrabold/ml-8 -->
+                    <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative flex items-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Vote Now
+                    </span>
+                </a>
+                <!-- Enhanced Theme Toggle -->
+                <button id="theme-toggle" class="p-4 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-110 shadow-md ml-4"> <!-- increased p-4 ml-4 -->
+                    <span id="theme-toggle-light-icon" class="hidden">
+                        <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"/>
+                        </svg>
+                    </span>
+                    <span id="theme-toggle-dark-icon" class="block dark:hidden">
+                        <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <!-- Enhanced Mobile Menu Button -->
+            <div class="lg:hidden flex items-center space-x-4">
+                <!-- Mobile Theme Toggle -->
+                <button id="mobile-theme-toggle" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300">
+                    <svg class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </button>
+                <button id="menu-btn" class="p-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-300 focus:outline-none">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7 hidden transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Enhanced Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden mobile-menu-slide bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700">
+            <div class="px-6 py-8 space-y-6"> <!-- increased py-8 space-y-6 -->
+                <a href="#about" class="block py-5 px-6 text-xl text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-yellow-400 rounded-lg transition-all duration-300 font-bold">
+                    <div class="flex items-center gap-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        About
+                    </div>
+                </a>
+                <a href="#vision" class="block py-5 px-6 text-xl text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-yellow-400 rounded-lg transition-all duration-300 font-bold">
+                    <div class="flex items-center gap-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                        Vision
+                    </div>
+                </a>
+                <a href="#manifesto" class="block py-5 px-6 text-xl text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-yellow-400 rounded-lg transition-all duration-300 font-bold">
+                    <div class="flex items-center gap-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Manifesto
+                    </div>
+                </a>
+                <a href="#contact" class="block py-5 px-6 text-xl text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-yellow-400 rounded-lg transition-all duration-300 font-bold">
+                    <div class="flex items-center gap-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        Contact
+                    </div>
+                </a>
+                <!-- Mobile Vote Button -->
+                <a href="#vote" class="block mt-8 py-6 px-10 text-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl text-center shadow-lg font-extrabold transition-all duration-300 hover:shadow-xl transform hover:scale-105">
+                    <div class="flex items-center justify-center gap-3">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Vote for Change Now
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center items-center pt-36 pb-12" id="hero" style="background: url('assests/12.jpeg') center center/cover no-repeat;">
+        <!-- Subtle dark overlay for readability -->
+        <div class="absolute inset-0 bg-black/60"></div>
+        <!-- Floating Particles -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-yellow-300 rounded-full opacity-60 floating" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-white rounded-full opacity-40 floating" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-5 h-5 bg-blue-300 rounded-full opacity-50 floating" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-2 h-2 bg-yellow-400 rounded-full opacity-70 floating" style="animation-delay: 0.5s;"></div>
+        </div>
+        <div class="relative z-10 flex flex-col items-center w-full max-w-6xl mx-auto px-4">
+            <!-- Enhanced Candidate Photo -->
+            <div class="relative mb-8">
+                <!-- Pulse rings -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-72 h-72 rounded-full border-4 border-yellow-300 opacity-30 pulse-ring"></div>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-64 h-64 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 opacity-20 blur-2xl"></div>
+                </div>
+                <!-- Main photo -->
+                <div class="relative">
+                    <img src="assests/11.jpg" alt="Mirnal Pratap Singh" class="w-64 h-64 rounded-full border-6 border-white shadow-2xl object-cover relative z-10 glow animate__animated animate__zoomIn" />
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full z-20 animate-pulse"></div>
+                    <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-blue-400 rounded-full z-20 animate-bounce"></div>
+                </div>
+            </div>
+            <!-- Enhanced Name and Title -->
+            <div class="text-center mb-8">
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-4 animate__animated animate__fadeInDown text-shadow font-['Montserrat'] tracking-tight">
+                    Mirnal Pratap Singh
+                </h1>
+                <div class="inline-block px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg mb-4">
+                    <span class="text-xl md:text-3xl font-bold text-gray-900 font-['Montserrat']">
+                        For Lohit Hostel President
+                    </span>
+                </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <div class="w-12 h-1 bg-yellow-400 rounded-full"></div>
+                    <div class="w-12 h-1 bg-white rounded-full"></div>
+                    <div class="w-12 h-1 bg-blue-400 rounded-full"></div>
+                </div>
+            </div>
+            <!-- Enhanced Promises Section -->
+            <div class="w-full max-w-5xl mb-8">
+                <h2 class="text-3xl font-bold text-white text-center mb-8 animate__animated animate__fadeInUp">
+                    My Promises to You
+                </h2>
+                <div class="grid promises md:grid-cols-2 gap-6 items-stretch">
+                    <!-- Hygiene Revolution -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                    <!-- Hygiene Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-7h2v2h-2zm0-8h2v6h-2z"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Hygiene Revolution</h3>
+                                <p class="text-gray-200">Improving hygiene of washrooms (especially girls')</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sports Excellence -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                                    <!-- Sports Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Sports Excellence</h3>
+                                <p class="text-gray-200">Maintenance of front area and sports facilities of the hostel</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Water Solutions -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <!-- Water Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C12 2 7 8.5 7 13a5 5 0 0010 0c0-4.5-5-11-5-11z"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Water Solutions</h3>
+                                <p class="text-gray-200">Resolving the problem of water and water coolers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 24x7 Access -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                                    <!-- Clock Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">24×7 Access</h3>
+                                <p class="text-gray-200">24×7 open terrace ensuring access and safety</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Facility Upgrade -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                                    <!-- Upgrade Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Facility Upgrade</h3>
+                                <p class="text-gray-200">Renovation of gym and mess</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Health & Safety -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center">
+                                    <!-- Health Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21C12 21 4 13.5 4 8.5A4.5 4.5 0 0112 4a4.5 4.5 0 018 4.5c0 5-8 12.5-8 12.5z"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Health & Safety</h3>
+                                <p class="text-gray-200">Availability of basic items like a first aid kit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Clean Environment -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
+                                    <!-- Leaf Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 21c0-7.732 6.268-14 14-14v2a12 12 0 01-12 12H5z"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Clean Environment</h3>
+                                <p class="text-gray-200">Maintaining proper hygiene inside and outside the hostel</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Study Environment -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center">
+                                    <!-- Book Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M4 4.5A2.5 2.5 0 016.5 7H20v13H6.5A2.5 2.5 0 014 17.5v-13z"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Study Environment</h3>
+                                <p class="text-gray-200">Improving the condition of the study room</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fun & Culture -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                                    <!-- Music/Party Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19V6l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Fun & Culture</h3>
+                                <p class="text-gray-200">Organizing interactive cultural and sports events</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Your Voice Matters -->
+                    <div class="promise-card rounded-2xl p-6 card-hover shine h-full flex items-stretch">
+                        <div class="flex items-center gap-4 h-full">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                                    <!-- Message/Feedback Icon -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Your Voice Matters</h3>
+                                <p class="text-gray-200">Proper redressal of problems, complaints, and suggestions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Enhanced CTA Button -->
+            <div class="text-center">
+                <a href="#contact" class="group relative inline-flex items-center justify-center px-12 py-4 text-xl font-bold text-white bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-2xl hover:shadow-yellow-500/50 transition-all duration-300 transform hover:scale-105 animate__animated animate__pulse animate__delay-1s overflow-hidden">
+                    <span class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative flex items-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        VOTE FOR CHANGE
+                        <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .glow {
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .backdrop-blur-custom {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .promise-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .grid.promises {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+        .shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.8s;
+        }
+        .shine:hover::before {
+            left: 100%;
+        }
+    </style>
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on scroll
+            const cards = document.querySelectorAll('.promise-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            });
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+            // Add parallax effect to floating elements
+            window.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                document.querySelectorAll('.floating').forEach((element, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 50;
+                    const y = (mouseY - 0.5) * speed * 50;
+                    element.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+        });
+    </script>
+
+
+    <!-- What I've Done Till Now Section -->
+    <section id="track-record" class="py-16 px-6">
+      <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">What I've Done Till Now</h2>
+          <p class="text-xl opacity-90">A journey of achievements and positive impact</p>
+        </div>
+        <!-- Timeline Line -->
+        <div class="relative">
+          <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-full transform -translate-y-1/2"></div>
+          <!-- Timeline Items Row 1 -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-green-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Increased Fruit Availability</h3>
+                <p class="text-gray-600 text-sm text-center">Ensured consistent supply of fruits in mess menu to promote healthier eating habits among residents.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-yellow-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Brown Paper Bags</h3>
+                <p class="text-gray-600 text-sm text-center">Replaced plastic packaging with eco-friendly brown paper bags for sustainability and environmental responsibility.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-blue-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Inclusive Menu Planning</h3>
+                <p class="text-gray-600 text-sm text-center">Curated menu catering to diverse tastes and dietary needs of all students, ensuring inclusivity and satisfaction.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-purple-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">New Utensils Procurement</h3>
+                <p class="text-gray-600 text-sm text-center">Facilitated purchase of new utensils and kitchenware to improve hygiene and food preparation efficiency.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Timeline Items Row 2 -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8 relative">
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-orange-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Intra-Hostel Sports Event</h3>
+                <p class="text-gray-600 text-sm text-center">Successfully conducted engaging sports event within hostel to promote bonding, health, and active participation.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-pink-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Winter Cloth Donation Drive</h3>
+                <p class="text-gray-600 text-sm text-center">Initiated and managed donation drive for winter clothing, encouraging compassion and social responsibility.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-cyan-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Feedback Mechanism</h3>
+                <p class="text-gray-600 text-sm text-center">Established clear and accessible system for mess feedback, ensuring every voice was heard and acted upon.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="bg-white rounded-xl shadow-lg p-6 card-hover border-t-4 border-indigo-500">
+                <div class="flex justify-center mb-4">
+                  <div class="timeline-icon w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  </div>
+                </div>
+                <h3 class="font-bold text-lg mb-3 text-center text-gray-800">Improved Food Quality</h3>
+                <p class="text-gray-600 text-sm text-center">Worked closely with mess staff and vendors to elevate overall quality, hygiene, and taste of food served.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="max-w-6xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-12">
+        <img src="assests/11.jpg" alt="Candidate" class="w-56 h-56 rounded-2xl shadow-lg object-cover" />
+        <div class="flex-1">
+          <h2 class="text-3xl font-bold mb-4">About Mirnal</h2>
+          <p class="mb-6 text-lg font-semibold">Mirnal Pratap Singh is a B.Tech 4th year student at the School of Engineering, JNU. He has served as Mess Secretary of Lohit Hostel, where he demonstrated leadership, inclusivity, and a commitment to community well-being.</p>
+        </div>
+      </section>
+    <style>
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      .timeline-item { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+      .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+      .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+      .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+      .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+      .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+      .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+      .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+      .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+      .timeline-icon:hover { animation: pulse 0.5s ease-in-out; }
+      .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+      .card-hover { transition: all 0.3s ease; }
+      .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    </style>
+
+
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="max-w-6xl mx-auto px-4 py-20" data-aos="zoom-in-up">
+      <h2 class="text-3xl font-bold mb-8 text-center">Campaign Gallery</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <img src="assests/WhatsApp Image 2025-07-23 at 17.34.32_4eb059cc.jpg" alt="Campaign Poster 1" class="rounded-xl shadow-lg w-full object-cover animate__animated animate__fadeInUp" />
+        <img src="assests/WhatsApp Image 2025-07-23 at 17.34.31_88e5eaf2.jpg" alt="Campaign Poster 2" class="rounded-xl shadow-lg w-full object-cover" />
+        <img src="assests/WhatsApp Image 2025-07-23 at 17.17.34_17f712a8.jpg" alt="Campaign Poster 3" class="rounded-xl shadow-lg w-full object-cover" />
+        <img src="assests/WhatsApp Image 2025-07-23 at 17.34.32_3350895f.jpg" alt="Campaign Poster 4" class="rounded-xl shadow-lg w-full object-cover" />
+        <img src="assests/WhatsApp Image 2025-07-23 at 17.33.56_7fd9bb53.jpg" alt="Campaign Poster 5" class="rounded-xl shadow-lg w-full object-cover" />
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-blue-50 py-20" data-aos="fade-up">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">Contact</h2>
+        <form class="bg-white rounded-xl shadow p-8 mb-8 grid grid-cols-1 gap-6">
+          <input type="text" placeholder="Your Name" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <input type="email" placeholder="Your Email" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <textarea placeholder="Your Message" rows="4" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required></textarea>
+          <button type="submit" class="bg-blue-600 text-white font-semibold rounded-lg px-6 py-3 hover:bg-blue-700 transition">Send Message</button>
+        </form>
+        <div class="text-center text-gray-700">
+          <p>Email: <a href="mailto:mirna.campaign@email.com" class="text-blue-600 hover:underline">mirna.campaign@email.com</a></p>
+          <p>Phone: <a href="tel:+1234567890" class="text-blue-600 hover:underline">+1 234 567 890</a></p>
+          <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-blue-600 dark:text-yellow-400 hover:text-blue-800 dark:hover:text-yellow-300"><svg class="w-6 h-6 animate-spin hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.56v14.91A4.56 4.56 0 0 1 19.44 24H4.56A4.56 4.56 0 0 1 0 19.47V4.56A4.56 4.56 0 0 1 4.56 0h14.91A4.56 4.56 0 0 1 24 4.56zM8.09 19.47V9.5H5.08v9.97zm-1.5-11.3a1.74 1.74 0 1 1 0-3.48 1.74 1.74 0 010 3.48zm15.41 11.3v-5.4c0-2.89-1.54-4.23-3.6-4.23-1.66 0-2.41.91-2.83 1.55v-1.33h-3.01c.04.88 0 9.97 0 9.97h3.01v-5.57c0-.3.02-.6.11-.81.24-.6.78-1.22 1.69-1.22 1.19 0 1.67.92 1.67 2.27v5.33h3.01z"/></svg></a>
+            <a href="#" class="text-blue-600 dark:text-yellow-400 hover:text-blue-800 dark:hover:text-yellow-300"><svg class="w-6 h-6 animate-bounce hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .39.045.765.127 1.124C7.691 8.095 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099-.807-.026-1.566-.247-2.228-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.956 2.444 3.377 4.6 3.417-1.68 1.318-3.809 2.105-6.102 2.105-.397 0-.788-.023-1.175-.069 2.179 1.397 4.768 2.213 7.557 2.213 9.054 0 14.009-7.496 14.009-13.986 0-.21 0-.423-.016-.634.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+            <a href="#" class="text-blue-600 dark:text-yellow-400 hover:text-blue-800 dark:hover:text-yellow-300"><svg class="w-6 h-6 animate-pulse hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.414 3.678 1.395c-.98.98-1.263 2.092-1.322 3.373C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.281.342 2.393 1.322 3.373.981.981 2.093 1.264 3.374 1.323C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.342 3.373-1.323.981-.98 1.264-2.092 1.323-3.373.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.281-.342-2.393-1.323-3.373-.98-.981-2.092-1.264-3.373-1.323C15.668.013 15.259 0 12 0z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t py-6 mt-12" data-aos="fade-in">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+        <div>© 2025 Mirna Johnson Election Campaign. All rights reserved.</div>
+        <div class="mt-2 md:mt-0">Website created by supporters.</div>
+      </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+      // Dark/Light mode toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      function setTheme(dark) {
+        if (dark) {
+          html.classList.add('dark');
+          darkIcon.classList.add('hidden');
+          lightIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          html.classList.remove('dark');
+          lightIcon.classList.add('hidden');
+          darkIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+      // Initial theme
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setTheme(true);
+      } else {
+        setTheme(false);
+      }
+      themeToggle.addEventListener('click', () => {
+        setTheme(!html.classList.contains('dark'));
+      });
+      // Mobile menu
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
